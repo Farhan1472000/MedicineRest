@@ -8,4 +8,6 @@ public partial class Categorydetail
     public int Categoryid { get; set; }
 
     public string? Categoryname { get; set; }
+
+    public virtual ICollection<Medicinedetail> Medicinedetails { get; set; } = new List<Medicinedetail>();
 }

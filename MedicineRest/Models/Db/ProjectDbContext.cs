@@ -61,16 +61,15 @@ public partial class ProjectDbContext : DbContext
 
         modelBuilder.Entity<Medicinedetail>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("medicinedetails");
+            entity.HasKey(e => e.Id).HasName("PK__medicine__3213E83F20F07C44");
 
+            entity.ToTable("medicinedetails");
+
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Categoryid).HasColumnName("categoryid");
             entity.Property(e => e.Expirydate)
-                .HasMaxLength(25)
-                .IsUnicode(false)
+                .HasColumnType("date")
                 .HasColumnName("expirydate");
-            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Mediname)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -78,7 +77,7 @@ public partial class ProjectDbContext : DbContext
             entity.Property(e => e.Prize).HasColumnName("prize");
             entity.Property(e => e.Stocklvl).HasColumnName("stocklvl");
 
-            entity.HasOne(d => d.Category).WithMany()
+            entity.HasOne(d => d.Category).WithMany(p => p.Medicinedetails)
                 .HasForeignKey(d => d.Categoryid)
                 .HasConstraintName("fk");
         });

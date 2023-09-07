@@ -5,7 +5,7 @@ namespace MedicineRest.Models.Db;
 
 public partial class Medicinedetail
 {
-    public int? Id { get; set; }
+    public int Id { get; set; }
 
     public int? Categoryid { get; set; }
 
@@ -13,7 +13,7 @@ public partial class Medicinedetail
 
     public int? Prize { get; set; }
 
-    public string? Expirydate { get; set; }
+    public DateTime? Expirydate { get; set; }
 
     public int? Stocklvl { get; set; }
 
