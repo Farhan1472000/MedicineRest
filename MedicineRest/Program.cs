@@ -23,11 +23,6 @@ namespace WebRestApp
 
             // Add services to the container.
 
-
-
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
             builder.Services.AddCors(conf =>
             {
                 conf.AddPolicy("policy1", pol => {
@@ -39,6 +34,11 @@ namespace WebRestApp
             });
 
 
+
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            
 
             //Adding authentication
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
